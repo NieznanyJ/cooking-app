@@ -2,7 +2,9 @@
   <app-hero></app-hero>
 
   <div class="w-full p-4">
-    <ul class="grid grid-rows-2 grid-cols-4 w-full md:flex justify-between shadow-lg rounded-lg p-4">
+    <ul
+      class="grid grid-rows-2 grid-cols-4 w-full md:flex justify-between shadow-lg rounded-lg p-4"
+    >
       <li
         class="p-2 w-max cursor-pointer hover:text-orange-500 transition-colors font-bold flex items-center gap-2"
       >
@@ -42,10 +44,21 @@
   </div>
 
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-16">
-      @for (i of [1,2,3,4,5,6,7,8,9,10]; track i) {
-        <app-recepie-card ></app-recepie-card>
+    <div
+      class="grid grid-cols-1 justify-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-16"
+    >
+      @if (loading) {
+        @for (i of [1,2,3,4,5,6,7,8,9,10]; track i) {
+          <app-home-skeleton />
+          }
+      }
+      @else {
+        @for (i of [1,2,3,4,5,6,7,8,9,10]; track i) {
+          <app-recepie-card></app-recepie-card>
+          }
       }
     </div>
   </div>
 </div>
+
+

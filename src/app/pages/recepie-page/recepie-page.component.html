@@ -1,0 +1,97 @@
+@if(loading){
+    <app-recepie-page-skeleton></app-recepie-page-skeleton>
+}
+@else {
+    <div class="container mx-auto p-6">
+        <header class="text-center mb-12">
+          <h1 class="text-4xl font-bold text-gray-800">Delicious Chocolate Cake</h1>
+          <p class="text-lg text-gray-600 mt-4">A rich and moist chocolate cake for any occasion.</p>
+          
+          <!-- Like Button with Heart Icon -->
+          <div class="flex items-center justify-center mt-4">
+            <button class="flex items-center text-red-500 hover:text-red-600 transition-colors focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18l-1.45-1.316C3.975 12.052 1 9.272 1 6.5 1 4.5 2.5 3 4.5 3 5.74 3 6.913 3.684 8 5.013 9.087 3.684 10.26 3 11.5 3 13.5 3 15 4.5 15 6.5c0 2.772-2.975 5.552-8.55 10.184L10 18z" clip-rule="evenodd" />
+              </svg>
+              Like
+            </button>
+            
+            <!-- Star Rating -->
+            <div class="ml-4 flex items-center">
+              <span class="text-lg font-semibold mr-2">Rate:</span>
+              <div class="flex">
+                <input type="radio" id="star5" name="rating" value="5" class="hidden" />
+                <label for="star5" class="star-label"><i class="far fa-star text-yellow-400 hover:text-yellow-500 cursor-pointer"></i></label>
+                <input type="radio" id="star4" name="rating" value="4" class="hidden" />
+                <label for="star4" class="star-label"><i class="far fa-star text-yellow-400 hover:text-yellow-500 cursor-pointer"></i></label>
+                <input type="radio" id="star3" name="rating" value="3" class="hidden" />
+                <label for="star3" class="star-label"><i class="far fa-star text-yellow-400 hover:text-yellow-500 cursor-pointer"></i></label>
+                <input type="radio" id="star2" name="rating" value="2" class="hidden" />
+                <label for="star2" class="star-label"><i class="far fa-star text-yellow-400 hover:text-yellow-500 cursor-pointer"></i></label>
+                <input type="radio" id="star1" name="rating" value="1" class="hidden" />
+                <label for="star1" class="star-label"><i class="far fa-star text-yellow-400 hover:text-yellow-500 cursor-pointer"></i></label>
+              </div>
+            </div>
+          </div>
+        </header>
+      
+        <div class="flex flex-col md:flex-row md:space-x-8">
+          <div class="md:w-1/2">
+            <img src="https://via.placeholder.com/600x400" alt="Chocolate Cake" class="rounded-lg shadow-lg">
+          </div>
+          <div class="md:w-1/2 mt-8 md:mt-0">
+            <h2 class="text-2xl font-semibold mb-4">Ingredients</h2>
+            <ul class="list-disc list-inside space-y-2">
+              <!-- List of Ingredients -->
+              <li>1 and 1/2 cups (190g) all-purpose flour</li>
+              <li>1 and 1/2 cups (300g) granulated sugar</li>
+              <li>3/4 cup (75g) unsweetened cocoa powder</li>
+              <li>1 and 1/2 teaspoons baking powder</li>
+              <li>1 and 1/2 teaspoons baking soda</li>
+              <li>1 teaspoon salt</li>
+              <li>2 large eggs</li>
+              <li>1 cup (240ml) whole milk</li>
+              <li>1/2 cup (120ml) vegetable oil</li>
+              <li>2 teaspoons vanilla extract</li>
+              <li>1 cup (240ml) boiling water</li>
+            </ul>
+          </div>
+        </div>
+      
+        <div class="mt-12">
+          <h2 class="text-2xl font-semibold mb-4">Instructions</h2>
+          <ol class="list-decimal list-inside space-y-4">
+            <!-- List of Instructions -->
+            <li>Preheat your oven to 350°F (175°C). Grease and flour two 9-inch round baking pans.</li>
+            <li>In a large bowl, stir together the flour, sugar, cocoa powder, baking powder, baking soda, and salt.</li>
+            <li>Add the eggs, milk, oil, and vanilla. Beat on medium speed for 2 minutes. Stir in the boiling water last. The batter will be thin.</li>
+            <li>Pour the batter evenly into the prepared pans. Bake for 30 to 35 minutes, or until a toothpick inserted into the center comes out clean.</li>
+            <li>Cool the cakes in the pans for 10 minutes, then remove them from the pans and cool completely on a wire rack.</li>
+            <li>Frost with your favorite chocolate frosting and enjoy!</li>
+          </ol>
+        </div>
+      
+        <!-- Categories and Difficulty/Time -->
+        <div class="mt-12 flex items-center space-x-4">
+          <!-- Category -->
+          <div class="flex items-center space-x-2">
+            <span class="font-semibold">Category:</span>
+            <span class="px-2 py-1 bg-gray-200 text-gray-800 rounded">Desserts</span>
+          </div>
+          
+          <!-- Difficulty -->
+          <div class="flex items-center space-x-2">
+            <span class="font-semibold">Difficulty:</span>
+            <span class="px-2 py-1 bg-gray-200 text-gray-800 rounded">Easy</span>
+          </div>
+          
+          <!-- Time Needed -->
+          <div class="flex items-center space-x-2">
+            <span class="font-semibold">Time:</span>
+            <span class="px-2 py-1 bg-gray-200 text-gray-800 rounded">30 mins - 1 hour</span>
+          </div>
+        </div>
+      </div>
+      
+}
+
