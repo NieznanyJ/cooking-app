@@ -1,0 +1,44 @@
+<nav class="w-full flex justify-end items-center py-1 border-b-2 page">
+  <ul class="flex gap-10 p-4 justify-end">
+    <li>
+      <a
+        class="nav-link group hover:text-green-500 transition-colors"
+        routerLink="/"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+      <i class="fa-solid fa-house group-hover:text-green-500 transition-colors"></i>Home</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav-link group hover:text-blue-500 transition-colors"
+        routerLink="recepies"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+      <i class="fa-solid fa-book group-hover:text-blue-500 transition-colors"></i>Recepies
+      </a>
+    </li>
+  </ul>
+
+  <div class="flex gap-4 p-4 pr-0 ml-10">
+    <a
+      routerLink="login"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      class="nav-user-btn"
+      >login</a
+    >
+    <a
+    routerLink="register"
+    routerLinkActive="action"
+    ariaCurrentWhenActive="page"
+      class="nav-user-btn flex gap-2 justify-center items-center bg-green-500 text-white transition-colors"
+    >
+    <i class="fa-solid fa-user"></i>
+      Create an account
+    </a>
+  </div>
+</nav>
+<router-outlet></router-outlet>
