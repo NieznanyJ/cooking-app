@@ -6,206 +6,141 @@
     </p>
   </header>
 
-  <form
-    [formGroup]="recipeForm"
-    (ngSubmit)="onSubmit()"
-    class="bg-white p-8 rounded-lg shadow-lg"
-  >
-    <div class="mb-6">
-      <label for="title" class="block text-gray-700 text-sm font-bold mb-2"
-        >Recipe Title</label
-      >
-      <input
-        formControlName="title"
-        id="title"
-        type="text"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none border-transparent focus:border-green-500 transition-colors focus:shadow-outline"
-        required
-      />
-    </div>
+  <div class="flex">
+    <app-filter [sticky]="true">
+      <app-category-filter
+        (categorySelected)="onCategorySelected($event)"
+      ></app-category-filter>
+      <app-time-filter
+        [radio]="true"
+        (timeSelected)="onTimeSelected($event)"
+      ></app-time-filter>
+      <app-diffuculty-filter
+        [radio]="true"
+        (difficultySelected)="onDifficultySelected($event)"
+      ></app-diffuculty-filter>
+    </app-filter>
+    <form
+      [formGroup]="recipeForm"
+      (ngSubmit)="onSubmit()"
+      class="bg-white p-8 rounded-lg shadow-lg flex-1"
+    >
+      <div class="mb-6">
+        <label for="title" class="block text-gray-700 text-sm font-bold mb-2"
+          >Recipe Title</label
+        >
+        <input
+          formControlName="title"
+          id="title"
+          type="text"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none border-transparent focus:border-green-500 transition-colors focus:shadow-outline"
+          required
+        />
+      </div>
 
-    <div class="mb-6">
-      <label
-        for="description"
-        class="block text-gray-700 text-sm font-bold mb-2"
-        >Description</label
-      >
-      <textarea
-        formControlName="description"
-        id="description"
-        rows="3"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-transparent focus:border-green-500 transition-colors focus:shadow-outline" 
-        required
-      ></textarea>
-    </div>
+      <div class="mb-6">
+        <label
+          for="description"
+          class="block text-gray-700 text-sm font-bold mb-2"
+          >Description</label
+        >
+        <textarea
+          formControlName="description"
+          id="description"
+          rows="3"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-transparent focus:border-green-500 transition-colors focus:shadow-outline"
+          required
+        ></textarea>
+      </div>
 
-    <app-filter
-      [showCategories]="true"
-      [showDifficulty]="true"
-      [showTime]="true"
-      (categorySelected)="onCategorySelected($event)"
-      (difficultySelected)="onDifficultySelected($event)"
-      (timeSelected)="onTimeSelected($event)"
-    ></app-filter>
-    <div>
-      @if (selectedCategories.length || difficulty.name || time.name) {
+      <div>
+        @if (selectedCategories.length || difficulty.name || time.name) {
         <ul class="flex flex-col gap-5">
           <li>
             @if (selectedCategories.length > 0) {
-              <ul class="flex flex-wrap gap-4 items-center">
-                @for ( category of selectedCategories; track $index) {
-                  <li class="relative flex gap-2 items-center border-2 p-2 rounded-xl shadow-sm cursor-pointer hover:bg-red-300 transition-colors" (click)="removeCategory(category)">
-                    <i class="{{ category.icon }}"></i>
-                    <span>{{ category.name }}</span>
-                    
-                  </li>
-                }
-              </ul>
+            <ul class="flex flex-wrap gap-4 items-center">
+              @for ( category of selectedCategories; track $index) {
+              <li
+                class="relative flex gap-2 items-center border-2 p-2 rounded-xl shadow-sm"
+              >
+                <i class="{{ category.icon }}"></i>
+                <span>{{ category.name }}</span>
+              </li>
+              }
+            </ul>
             }
           </li>
-          
+
           @if (difficulty.name) {
-            <li class="relative flex w-min gap-2 items-center border-2 p-2 rounded-xl shadow-sm cursor-pointer hover:bg-red-300 transition-colors" (click)="clearDifficulty()">
-              <i class="{{ difficulty.icon }}"></i>
-              <span>{{ difficulty.name }}</span>
-              
-            </li>
+          <li
+            class="relative flex w-min gap-2 items-center border-2 p-2 rounded-xl shadow-sm"
+          >
+            <i class="{{ difficulty.icon }}"></i>
+            <span>{{ difficulty.name }}</span>
+          </li>
+          } @if (time.name) {
+          <li
+            class="relative flex w-max gap-2 items-center border-2 p-2 rounded-xl shadow-sm"
+          >
+            <i class="{{ time.icon }}"></i>
+            <span>{{ time.name }}</span>
+          </li>
           }
-         
-          @if (time.name) {
-            <li class="relative flex w-max gap-2 items-center border-2 p-2 rounded-xl shadow-sm cursor-pointer hover:bg-red-300 transition-colors" (click)="clearTime()">
-              <i class="{{ time.icon }}"></i>
-              <span>{{ time.name }}</span>
-              
-            </li>
-          }
-          
         </ul>
-      }
-    </div>
-
-    <div class="mb-6 mt-5">
-      <label for="images" class="block text-gray-700 text-sm font-bold mb-2"
-        >Upload Images</label
-      >
-      <input
-        type="file"
-        id="images"
-        class="hidden"
-        (change)="onFileChange($event)"
-        multiple
-      />
-      <label
-        for="images"
-        class="cursor-pointer inline-flex items-center bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-      >
-        <svg
-          class="w-5 h-5 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 4v16h16V4H4z"
-          ></path>
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M8 2v4m8-4v4M4 10h16M10 14h4"
-          ></path>
-        </svg>
-        Choose Images
-      </label>
-      <span class="ml-2 text-gray-600">{{ fileNames.join(", ") }}</span>
-    </div>
-
-    <div class="mb-6">
-      <label for="imageUrls" class="block text-gray-700 text-sm font-bold mb-2"
-        >Or Enter Image URLs</label
-      >
-      <div class="flex">
-        <input
-          formControlName="imageUrls"
-          id="imageUrls"
-          type="text"
-          class="shadow appearance-none border rounded-l w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-transparent focus:border-green-500 transition-colors focus:shadow-outline"
-          placeholder="https://example.com/image.jpg"
-        />
-        <button
-          type="button"
-          (click)="addImageUrl()"
-          class="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded-r focus:outline-none focus:shadow-outline transition-colors transition-colors"
-        >
-          Add
-        </button>
-      </div>
-    </div>
-
-
-
-    
-    <div class="mb-6">
-      <div class="grid grid-cols-3 gap-4">
-        @for (preview of imagePreviews; track $index) {
-        <div class="mb-2 relative group">
-          <button type="button" (click)="removeImage($index)" class="absolute top-0 right-0 m-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            &times;
-          </button>
-          <img
-            [src]="preview.url"
-            alt="Image Preview"
-            class="w-full h-auto rounded-lg shadow-md"
-          />
-        </div>
         }
       </div>
-    </div>
 
-    <div class="mb-6">
-      <label
-        for="ingredients"
-        class="block text-gray-700 text-sm font-bold mb-2"
-        >Ingredients</label
-      >
-      <textarea
-        formControlName="ingredients"
-        id="ingredients"
-        rows="5"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-transparent focus:border-green-500 transition-colors focus:shadow-outline"
-        placeholder="List each ingredient on a new line"
-        required
-      ></textarea>
-    </div>
+      <div class="mb-6 mt-5">
+        <label for="images" class="block text-gray-700 text-sm font-bold mb-2"
+          >Upload Images</label
+        >
 
-    <div class="mb-6">
-      <label
-        for="instructions"
-        class="block text-gray-700 text-sm font-bold mb-2"
-        >Instructions</label
-      >
-      <textarea
-        formControlName="instructions"
-        id="instructions"
-        rows="7"
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-transparent focus:border-green-500 transition-colors focus:shadow-outline"
-        placeholder="List each step on a new line"
-        required
-      ></textarea>
-    </div>
+        <app-upload-widget></app-upload-widget>
+      </div>
 
-    <div class="flex items-center justify-between">
-      <button
-        type="submit"
-        class="bg-green-500 hover:bg-green-400 cursor-pointer text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors"
-        [disabled]="recipeForm.invalid"
-      >
-        Create Recipe
-      </button>
-    </div>
-  </form>
+      <div class="mb-6">
+        <label
+          for="ingredients"
+          class="block text-gray-700 text-sm font-bold mb-2"
+          >Ingredients</label
+        >
+        <!-- <textarea
+          formControlName="ingredients"
+          id="ingredients"
+          rows="5"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-transparent focus:border-green-500 transition-colors focus:shadow-outline"
+          placeholder="List each ingredient on a new line"
+          required
+        ></textarea> -->
+        <app-text-widget [placeholder]="'List ingredients needed for your recipe here. Include quantities and specifics to guide others in recreating your dish.'" />
+      </div>
+
+      <div class="mb-6">
+        <label
+          for="instructions"
+          class="block text-gray-700 text-sm font-bold mb-2"
+          >Instructions</label
+        >
+        <!-- <textarea
+          formControlName="instructions"
+          id="instructions"
+          rows="7"
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-transparent focus:border-green-500 transition-colors focus:shadow-outline"
+          placeholder="List each step on a new line"
+          required
+        ></textarea> -->
+        <app-text-widget [placeholder]="'Enter preparation steps, cooking techniques, and any special instructions here. Be clear and concise to help others recreate your delicious recipe!'"/>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <button
+          type="submit"
+          class="bg-green-500 hover:bg-green-400 cursor-pointer text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors"
+          [disabled]="recipeForm.invalid"
+        >
+          Create Recipe
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

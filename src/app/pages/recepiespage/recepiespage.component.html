@@ -2,42 +2,26 @@
   <h1 class="text-3xl font-bold mb-6">Recipes</h1>
 
   <!-- Filter Component -->
-  <app-filter
-    [showCategories]="true"
-    [showRating]="true"
-    [showLikes]="true"
-    [showDifficulty]="true"
-    [showTime]="true"
-  >
-    <li>
-      <div class="flex rounded-full w-full">
-        <div
-          class="md:w-1/6 lg:w-[20%] shadow-md rounded-l-full flex items-center justify-center bg-white"
-        >
-          <i class="fa-solid fa-magnifying-glass text-gray-600"></i>
-        </div>
-        <input
-          class="border-2 border-gray-300 shadow-md rounded-r-full w-3/4 p-2 outline-none text-lg bg-gray-100 hover:bg-white focus:bg-white focus:border-green-500 hover:border-green-500 transition-colors"
-          type="text"
-          placeholder="Search..."
-        />
-      </div>
-    </li>
-  </app-filter>
+  <div class="flex gap-10">
+    <app-filter >
+      <app-searchbar></app-searchbar>
+      <app-category-filter></app-category-filter>
+      <app-time-filter></app-time-filter>
+      <app-diffuculty-filter></app-diffuculty-filter>
+      <app-rating-filter></app-rating-filter>
+      <app-likes-filter></app-likes-filter>
+    </app-filter>
 
-  <!-- Recipe Grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-8">
-    <!-- Recipe Card Component -->
-    @if (loading) {
-      @for (item of counter; track item) {
-        <app-home-skeleton />
-      }
-    }
-    @else {
-      @for (item of counter; track item) {
-        <app-recepie-card />
-      }
-    }
-    
+    <!-- Recipe Grid -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 mt-8"
+    >
+      <!-- Recipe Card Component -->
+      @if (loading) { @for (item of counter; track item) {
+      <app-home-skeleton />
+      } } @else { @for (item of counter; track item) {
+      <app-recepie-card />
+      } }
+    </div>
   </div>
 </section>

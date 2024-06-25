@@ -1,0 +1,67 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <label
+    for="images"
+    id="upload_widget"
+    (click)="openWidget()"
+    class="cursor-pointer inline-flex items-center bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+  >
+    <svg
+      class="w-5 h-5 mr-2"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 4v16h16V4H4z"
+      ></path>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M8 2v4m8-4v4M4 10h16M10 14h4"
+      ></path>
+    </svg>
+    Choose Images
+  </label>
+
+  <!-- placeholder for uploaded image -->
+  <img id="uploadedimage" />
+  <div class="upload-widget">
+    @if (uploadedImages.length > 0) {
+    <div class="uploaded-images">
+      <div class="uploaded-image grid grid-cols-3 gap-4 mt-6">
+        @for (imageUrl of uploadedImages; track $index) {
+        <div class="mb-2 relative group max-h-[300px]">
+          <button
+            type="button"
+            (click)="removeImage($index)"
+            class="absolute top-0 right-0 m-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            &times;
+          </button>
+          <img
+            [src]="imageUrl"
+            alt="Image Preview"
+            class="w-full h-auto rounded-lg shadow-md object-cover max-h-[300px]"
+          />
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- cloudinary upload widget -->
+  <script
+    src="https://widget.cloudinary.com/v2.0/global/all.js"
+    type="text/javascript"
+  ></script>
+
+  <!-- local upload instantiation -->
+  <script src="upload_widget.js" type="text/javascript"></script>
+</div>

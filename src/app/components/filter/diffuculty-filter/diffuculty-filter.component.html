@@ -1,0 +1,29 @@
+<div class="bg-white p-4 rounded-lg shadow">
+    <h3 class="text-lg font-semibold mb-3 text-gray-800">Difficulty</h3>
+    <ul class="space-y-2">
+      <li class="flex items-center">
+        @if (radio) {
+          <input type="radio" id="easy" name="difficulty" class="mr-2">
+        }@else {
+          <input type="checkbox" id="easy" class="mr-2">
+        }
+        <label for="easy" class="text-green-500 flex items-center cursor-pointer" (click)="this.formService.toggleFilter($event, difficultySelected)"><i class="fas fa-smile mr-2"></i> Easy</label>
+      </li>
+      <li class="flex items-center">
+        @if (radio) {
+          <input type="radio" id="intermediate" name="difficulty" class="mr-2">
+        }@else {
+          <input type="checkbox" id="intermediate" class="mr-2">
+        }
+        <label for="intermediate" class="text-yellow-500 flex items-center cursor-pointer" (click)="this.formService.toggleFilter($event, difficultySelected)"><i class="fas fa-smile mr-2"></i> Intermediate</label>
+      </li>
+      <li class="flex items-center">
+        @if (radio) {
+          <input type="radio" id="advanced" name="difficulty" class="mr-2">
+        }@else {
+          <input type="checkbox" id="advanced" class="mr-2">
+        }
+        <label for="advanced" class="text-red-500 flex items-center cursor-pointer" (click)="this.formService.toggleFilter($event, difficultySelected)"><i class="fas fa-smile mr-2"></i> Advanced</label>
+      </li>
+    </ul>
+  </div>

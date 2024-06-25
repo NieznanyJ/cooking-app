@@ -1,0 +1,76 @@
+<div class="bg-white p-4 rounded-lg shadow">
+  <h3 class="text-lg font-semibold mb-3 text-gray-800">Categories</h3>
+  <ul class="space-y-2">
+    <li class="flex items-center">
+      <input type="checkbox" id="breakfast" class="mr-2" />
+      <label
+        for="breakfast"
+        class="cursor-pointer hover:text-blue-600 transition-colors flex items-center"
+        (click)="this.formService.toggleFilter($event, categorySelected)"
+      >
+        <i class="fas fa-sun mr-2"></i> Breakfast
+      </label>
+    </li>
+    <li class="flex items-center">
+      <input type="checkbox" id="lunch" class="mr-2" />
+      <label
+        for="lunch"
+        class="cursor-pointer hover:text-blue-600 transition-colors flex items-center"
+        (click)="this.formService.toggleFilter($event, categorySelected)"
+      >
+        <i class="fas fa-hamburger mr-2"></i> Lunch
+      </label>
+    </li>
+    <li class="flex items-center">
+      <input type="checkbox" id="dinner" class="mr-2" />
+      <label
+        for="dinner"
+        class="cursor-pointer hover:text-blue-600 transition-colors flex items-center"
+        (click)="this.formService.toggleFilter($event, categorySelected)"
+      >
+        <i class="fas fa-moon mr-2"></i> Dinner
+      </label>
+    </li>
+    <li class="flex items-center">
+      <input type="checkbox" id="soups-stews" class="mr-2" />
+      <label
+        for="soups-stews"
+        class="cursor-pointer hover:text-blue-600 transition-colors flex items-center"
+        (click)="this.formService.toggleFilter($event, categorySelected)"
+      >
+        <i class="fas fa-utensils mr-2"></i> Soups & Stews
+      </label>
+    </li>
+    <li class="flex items-center">
+      <input type="checkbox" id="salads" class="mr-2" />
+      <label
+        for="salads"
+        class="cursor-pointer hover:text-blue-600 transition-colors flex items-center"
+        (click)="this.formService.toggleFilter($event, categorySelected)"
+        
+      >
+        <i class="fas fa-leaf mr-2"></i> Salads
+      </label>
+    </li>
+    <li class="flex items-center">
+      <input type="checkbox" id="desserts" class="mr-2" />
+      <label
+        for="desserts"
+        class="cursor-pointer hover:text-blue-600 transition-colors flex items-center"
+        (click)="this.formService.toggleFilter($event, categorySelected)"
+      >
+        <i class="fas fa-birthday-cake mr-2"></i> Desserts
+      </label>
+    </li>
+    <li class="flex items-center">
+      <input type="checkbox" id="vegan" class="mr-2" />
+      <label
+        for="vegan"
+        class="cursor-pointer hover:text-blue-600 transition-colors flex items-center"
+        (click)="this.formService.toggleFilter($event, categorySelected)"
+      >
+        <i class="fas fa-seedling mr-2"></i> Vegan
+      </label>
+    </li>
+  </ul>
+</div>

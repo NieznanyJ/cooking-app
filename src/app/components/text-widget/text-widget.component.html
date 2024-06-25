@@ -1,0 +1,8 @@
+<quill-editor
+  classes="shadow appearance-none border  w-full max-w-[none] min-h-[200px]  rounded  rounded-t-none text-gray-700 leading-tight border-t-none  focus:outline-none focus:shadow-outline border-transparent  transition-colors focus:shadow-outline"
+  (onContentChanged)="changeContent($event)"
+  [modules]="editorConfig"
+  [style.width]="'100%'"
+  [style.minHeight]="'200px'"
+  [placeholder]="placeholder"
+></quill-editor>

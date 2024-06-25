@@ -1,0 +1,61 @@
+<div class="bg-white p-4 rounded-lg shadow">
+  <h3 class="text-lg font-semibold mb-3 text-gray-800">Time</h3>
+  <ul class="space-y-2">
+    <li class="flex items-center">
+      @if (radio) {<input
+        type="radio"
+        id="under-30"
+        name="time"
+        class="mr-2"
+      />}@else {<input type="checkbox" id="under-30" class="mr-2" />}
+      <label
+        for="under-30"
+        class="flex items-center cursor-pointer"
+        (click)="this.formService.toggleFilter($event, timeSelected)"
+        ><i class="fas fa-clock mr-2"></i> < 30 mins</label
+      >
+    </li>
+    <li class="flex items-center">
+      @if (radio) {<input
+        type="radio"
+        id="30-to-60"
+        name="time"
+        class="mr-2"
+      />}@else {<input type="checkbox" id="30-to-60" class="mr-2" />}
+      <label
+        for="30-to-60"
+        class="flex items-center cursor-pointer"
+        (click)="this.formService.toggleFilter($event, timeSelected)"
+        ><i class="fas fa-clock mr-2"></i> 30 mins - 1 hour</label
+      >
+    </li>
+    <li class="flex items-center">
+      @if (radio) {<input
+        type="radio"
+        id="1-to-2"
+        name="time"
+        class="mr-2"
+      />}@else {<input type="checkbox" id="1-to-2" class="mr-2" />}
+      <label
+        for="1-to-2"
+        class="flex items-center cursor-pointer"
+        (click)="this.formService.toggleFilter($event, timeSelected)"
+        ><i class="fas fa-clock mr-2"></i> 1 - 2 hours</label
+      >
+    </li>
+    <li class="flex items-center">
+      @if (radio) {<input
+        type="radio"
+        id="over-2"
+        name="time"
+        class="mr-2"
+      />}@else {<input type="checkbox" id="over-2" class="mr-2" />}
+      <label
+        for="over-2"
+        class="flex items-center cursor-pointer"
+        (click)="this.formService.toggleFilter($event, timeSelected)"
+        ><i class="fas fa-clock mr-2"></i> > 2 hours</label
+      >
+    </li>
+  </ul>
+</div>
